@@ -8,7 +8,7 @@
 - **消费记录**：每张卡可记录每笔消费（商户、金额、备注），自动同步笔数
 - **笔数进度**：`x / y` 直观显示，还差几笔自动提示
 - **横/竖两种卡面**：支持标准横版卡片（Visa / MasterCard / JCB / UnionPay / Discover / QuickPass）和竖版（American Express / Diners Club）
-- **8 个全球卡组织预设卡面**：可一键选用，亦可上传自定义卡图
+- **7 个全球卡组织预设卡面**：可一键选用，亦可上传自定义卡图
 - **现代化调色板**：HSV 色环 + 亮度滑块 + HEX 实时显示
 - **下次年费结算日提醒**、卡片有效期记录
 - **Material Design 3** 锋锐风格（expressive shapes、动态色、edge-to-edge）
@@ -45,20 +45,20 @@ UnionPay / 银联闪付在 simple-icons 中未收录，使用自绘 SVG（合规
 
 ```
 app/
-├── src/main/java/com/example/creditcardtracker/
+├── src/main/java/com/shuaji/cards/
 │   ├── data/
-│   │   ├── local/          # Room：Entity、Dao、AppDatabase、Migration 1→2
-│   │   ├── CreditCardRepository.kt
+│   │   ├── local/          # Room：Entity、Dao、AppDatabase、Migration
+│   │   ├── CardRepository.kt
 │   │   ├── AppContainer.kt # 手动 DI 容器（无 Hilt）
-│   │   └── CardNetworkProvider.kt  # 8 个卡组织枚举
+│   │   └── CardNetworkProvider.kt  # 7 个卡组织枚举
 │   ├── ui/
 │   │   ├── theme/          # Theme.kt / Shape.kt / Type.kt
-│   │   ├── component/      # CreditCardVisual.kt、ModernColorPicker.kt
-│   │   └── screen/         # CardList / CardDetail / CardEdit
+│   │   ├── component/      # CardVisual.kt、ModernColorPicker.kt
+│   │   └── screen/         # CardList / CardDetail / CardEdit / CardFolder
 │   ├── MainActivity.kt
-│   └── CreditCardApp.kt
+│   └── ShuajiApplication.kt
 ├── src/main/res/
-│   ├── drawable/           # 8 个卡组织 logo（6 个 simple-icons + 2 个自绘）
+│   ├── drawable/           # 7 个卡组织 logo（6 个 simple-icons + 1 个自绘）
 │   └── ...
 └── build.gradle.kts
 ```
