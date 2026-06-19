@@ -100,6 +100,20 @@ P1-CRIT（外键 schema 不一致）。
   可加 `concurrency` 取消同分支旧运行。proxy 的运行时 sed、debug 签名重建均为**有意为之**，不动。
 - 资源/Manifest/备份规则/locale 配置经核查均正确，无整改项。
 
+## 附录 C：收尾结论（本轮 /loop 完成状态）
+
+**高价值阶段全部完成并 CI 绿**（最新 commit CI success）。分支 `claude/project-quality-and-docs`
+相对 `main`：17 文件 +1104/−57。所有改动过的 .kt 本地 ktlint 0 violation。
+
+按「最佳实践」**有意不做**的项（避免对已高质量的代码做低价值 churn / 触碰零影响边界）：
+- `formatDate` 不缓存 `SimpleDateFormat`（缓存会固化 Locale，语言切换后陈旧 = 行为变更）。
+- `SettingsScreen` 的 `themeSettings` 不合并为单一 collector（per-item collector 的订阅生命周期
+  与顶层不同，属 Compose 细微语义差异，非零影响，收益极小）。
+- `applicationContext as ShuajiApplication` 保留（地道写法）。
+- `CardVisual`/`ModernColorPicker` 魔法数提常量：纯观感 churn，价值低，留作可选 polish。
+
+后续若要发版：v1.5.6 已在代码内就绪，tag/Release 需在本机 `gh` 收尾（本环境 tag push 被拦）。
+
 ## 附录 B：进度记忆（自动压缩前更新，供下次续作）
 
 - **当前阶段：P1-CRIT/P2/P3(部分)/P5/P7/P8 已落地并 CI 绿（b35253f success：ktlint+全部单测通过）。**
